@@ -1,0 +1,16 @@
+---
+build_resume:
+  image: docker:git
+  services:
+    - docker:dind
+  variables:
+    IMAGE: registry.gitlab.com/jimmyscene/resume:$CI_COMMIT_REF_SLUG
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker pull $IMAGE || true
+    - docker build -t $IMAGE .
+    - docker run -e CI_JOB_URL=$CI_JOB_URL -e DATE="$(date +"%B %d, %Y")" -v $(pwd):/app $IMAGE
+    - docker push $IMAGE
+  artifacts:
+    paths:
+      - resume.pdf
