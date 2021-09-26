@@ -21,7 +21,7 @@
 %% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
 % \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-\documentclass[10pt,a4paper,ragged2e]{assets/altacv}
+\documentclass[10pt,a4paper,ragged2e]{altacv}
 
 %% AltaCV uses the fontawesome and academicon fonts
 %% and packages.
@@ -42,22 +42,12 @@
   \usepackage[default]{lato}
 \fi
 
-\usepackage{hyperref}
-\hypersetup{%
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
-    pdftitle={Blake Easley Resume},
-    % bookmarks=true,
-    pdfpagemode=FullScreen,
-}
 % Change the colours if you want to
-\definecolor{IceBlue}{HTML}{008eab}
+\definecolor{VividPurple}{HTML}{3E0097}
 \definecolor{SlateGrey}{HTML}{2E2E2E}
 \definecolor{LightGrey}{HTML}{666666}
-\colorlet{heading}{IceBlue}
-\colorlet{accent}{IceBlue}
+\colorlet{heading}{VividPurple}
+\colorlet{accent}{VividPurple}
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
 
@@ -66,34 +56,22 @@
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
-
-
-
-\usepackage{catchfile}
-  \newcommand{\getenv}[2][]{%
-    \CatchFileEdef{\temp}{"|kpsewhich --var-value #2"}{\endlinechar=-1}%
-    \if\relax\detokenize{#1}\relax\temp\else\let#1\temp\fi}
-
 %% sample.bib contains your publications
-% \addbibresource{sample.bib}
+\addbibresource{sample.bib}
 
 \begin{document}
-\name{Blake Easley}
-\tagline{Software Engineer}
-
-\photo{2.5cm}{assets/resume}
+\name{Spencer Allen}
+\tagline{Fullstack Software Developer, Co-Founder @ themediapedia.com}
+% Cropped to square from https://en.wikipedia.org/wiki/Marissa_Mayer#/media/File:Marissa_Mayer_May_2014_(cropped).jpg, CC-BY 2.0
+\photo{2.5cm}{isso}
 \personalinfo{%
   % Not all of these are required!
   % You can add your own with \printinfo{symbol}{detail}
-  \email{blakeeasley69@gmail.com}
-  \location{Cary, NC}
-
-  \github{github.com/jimmyscene}
-  \gitlab{gitlab.com/jimmyscene}
-
-  \linkedin{linkedin.com/in/jimmyscene}
-
-%   \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
+  \email{allensg42@gmail.com}
+    \phone{919-414-4986}
+  \location{Raleigh, NC}
+  
+   \github{https://github.com/allensg}
 }
 
 %% Make the header extend all the way to the right, if you want.
@@ -108,50 +86,57 @@
 %% You can always just use \marginpar{...} if you do
 %% not need to align the top of the contents to any
 %% \cvsection title in the "main" bar.
-\cvsection[src/page1sidebar]{Career Experience}
+\cvsection[page1sidebar]{Experience}
 
-\cvevent{Senior Infrastructure Engineer}{Botkeeper}{Jan 2021 - Current}{Remote, North Carolina, USA}
+\cvevent{Co-Founder \& Fullstack Developer}{Mediajoy Inc.}{Jan 2021 -- Ongoing}{Remote}
 \begin{itemize}
-  \item Worked on a team of developers with many responsibilities
-  \item Half of my responsibilities were to manage the infrastructure; Managing Kubernetes and AWS resources, CI/CD pipelines, terraform, etc
-  \item The other half of my responsibilities consisted of standard backend development; nodeJS and python backends, ReactJS for frontend work, using the AWS APIs for SNS, SQS and more
+\item Designed and implemented multiple lambda processes to query data from media repository apis
+\item Developed a frontend ui and design for media tracking cards 
+\item Handled the database design for each new feature implemented and migration exports for library accumulation
+\item Built import funcitonality utilizing multiple third party apis for steam and xbox games
+\item Implemented traffic monitoring using Honeycomb
 \end{itemize}
 
 \divider
 
-\cvevent{Senior Devops Engineer}{Pearson Education - Contractor via Populus Group}{Feb 2020 -- Jan 2021}{Cary, North Carolina, USA}
+\cvevent{Senior Software Developer}{Zift Solutions}{Jan 2021 -- Ongoing}{Cary, NC - Remote}
 \begin{itemize}
-\item Worked on a team of engineers tasked with maintaining the deployment of a wide variety of applications
-\item All these applications were deployed on AWS, using a variety of different AWS services, including S3, EC2, ECS, Fargate
+\item Developed and maintained several customer facing web applications with multiple languages
+\item Worked closely with UK teams to manage customer issues build new features
+\item Managed Jenkins deploys on rotating weekend shifts
+\item Trained new hires and maintained documentation
 \end{itemize}
 
 \divider
 
-\cvevent{Cloud Engineer}{Cisco Systems - Full Time Employee}{Apr 2019 -- Feb 2020}{Cary, North Carolina, USA}
+\cvevent{Software Developer}{Prometheus Group}{Nov 2018 -- Jan 2021}{Raleigh, NC - Remote}
 \begin{itemize}
-\item Worked as part of a team supporting multiple cloud deployments of Openstack while also leveraging Openstack APIs / integrations
-\item Primary goal is to help the more infrastructure focused team members become more familiarized with software development and newer infrastructure technologies/practices in order to increase stability and rate of delivery
-\item Working with Ansible, Gitlab CI, Containers, Python
+\item Worked closely with frontend teams to build out the appropriate api layer and backend functionality
+\item Designed custom solutions to replicate customer requested functionality from other applications
+\item Presented my custom solutions to other teams and worked with them to implement across mobile
+and web
+\item Managed database conversions between older and modern systems to handle hierarchy shifts,
+timezone modifications, and incorporating existing data from other systems via csv import
+\item Handled Jenkins deploys and releases when necessary
 \end{itemize}
 
 \divider
 
-\cvevent{Full Stack Developer}{One Source Integrations (Part Time Consultant)}{October 2018 -- May 2019}{Cary, North Carolina, USA}
+\cvevent{Software Developer}{AT\&T / Apex Systems}{July 2017 -- November 2018}{Durham, NC}
 \begin{itemize}
-\item Worked on both the frontend and backend of a Go/JQuery application
-\item Utilized multiple ORM packages in Golang to find one that worked with our use-case
-\item Led conversion from JQuery to React.JS
-\item Used KubeVirt to deploy Virtual Machines inside of Kubernetes
-\item Built Gitlab CI pipelines to set up CI/CD for applications
+\item Developed an internal tool to manage ticket escalations for multiple systems
+\item Worked with team architect to design and incorporate new systems for clients
+\item Wrote and refactored core modules for enhanced functionality using TDD and presented these principles to other teams
+\item Handled on boarding and training for new developers
+\item Left in charge of beta testing and major releases on several occasions
+\item Worked on the QA sub team to examine and merge code
 \end{itemize}
 
-
-\begin{fullwidth}\center\footnotesize
-\vspace*{\fill}
-
 \divider
-\getenv[\URL]{CI_JOB_URL}
-	This document was generated by \href{\URL}{Gitlab CI} on \getenv{DATE}
-\end{fullwidth}
-\clearpage
+
+% \begin{itemize}
+% \item Appointed by the founder Larry Page in 2001 to lead the Product Management and User Interaction teams
+% \item Optimized Google's homepage and A/B tested every minor detail to increase usability (incl.~spacing between words, % color schemes and pixel-by-pixel element alignment)
+% \end{itemize}
+%
 \end{document}
