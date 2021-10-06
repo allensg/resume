@@ -130,7 +130,6 @@
 \newcommand{\linkedinsymbol}{\faLinkedin}
 \newcommand{\twittersymbol}{\faTwitter}
 \newcommand{\githubsymbol}{\faGithub}
-\newcommand{\gitlabsymbol}{\faGitlab}
 \newcommand{\orcidsymbol}{\aiOrcid}
 \newcommand{\mailsymbol}{\faEnvelope}
 
@@ -146,7 +145,6 @@
 \newcommand{\twitter}[1]{\printinfo{\twittersymbol}{#1}}
 \newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
 \newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
-\newcommand{\gitlab}[1]{\printinfo{\gitlabsymbol}{#1}}
 \newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
 \newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
 
@@ -185,6 +183,12 @@
 \newcommand{\cvsubsection}[1]{%
   \smallskip%
   {\color{emphasis}\large\bfseries{#1}\par}\medskip
+}
+
+\newcommand{\cvsubheader}[1]{%
+  \smallskip%
+  %{\color{emphasis}\small\bfseries{#1}\par}\divider\smallskip 
+  {\color{emphasis}\small\bfseries{#1}\par}\medskip
 }
 
 % v1.1.4: fixes inconsistent font size
@@ -229,6 +233,7 @@
         \global\let\totalnum=\pgfmathresult%
     }%
     \begin{tikzpicture}
+
       % Calculate the thickness and the middle line of the wheel
       \pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
       \pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
@@ -283,6 +288,16 @@
 
 \newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}
 
+\RequirePackage[backend=biber,style=authoryear,sorting=ydnt]{biblatex}
+%% For removing numbering entirely when using a numeric style
+% \setlength{\bibhang}{1em}
+% \DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
+% \setlength{\biblabelsep}{0pt}
+\defbibheading{pubtype}{\cvsubsection{#1}}
+\renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
+\AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
+\setlength{\bibitemsep}{0.25\baselineskip}
+-
 % v1.1.2: make it easier to add a sidebar aligned with top of next page
 \RequirePackage{afterpage}
 \newcommand{\addsidebar}[2][]{\marginpar{%
